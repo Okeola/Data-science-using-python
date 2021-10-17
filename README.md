@@ -4,12 +4,12 @@
 Bikeshare data created on 10/17/2021
 
 ### Project Title
- Bikeshare analysis
+ Bikeshare ride analysis
 
 ### Description
 This projects takes sorts and present data from three cities
 
-### Files used
+### Files used as inputs
 chicago
 new_york_city
 washington
