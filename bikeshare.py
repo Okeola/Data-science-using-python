@@ -25,7 +25,7 @@ def city_name ():
         elif city.lower() == 'washington':
             return 'washington.csv'
         else:
-            print('Sorry, I do not understand your input. Please input either '
+            print('Sorry, city data not avaialble.Please input either '
                   'Chicago, New York, or Washington.')
 
 # Get the filter criteria
@@ -69,10 +69,10 @@ def get_day():
     Args:   none.
     Returns: upper and lower limit of date for the bikeshare data.
     '''
-    this_month = get_month()[0]  
+    this_month = get_month()[0]
     month = int(this_month[5:])
     valid_date = False
-    while valid_date == False:    
+    while valid_date == False:
         inte = False
         day = input('\nWhich day? Please type your response as an integer.\n')
         while inte == False:
@@ -102,7 +102,7 @@ def popu_month(df):
     index = int(df['start_time'].dt.month.mode())
     pop_month = months[index - 1]
     print('The most popular month is {}.'.format(pop_month))
-    
+
 # Get most popular day
 def popu_day(df):
     '''Finds the most popular day of week for start time column.
@@ -114,7 +114,7 @@ def popu_day(df):
     mostpop_day = days_of_week[index]
     print('The most popular day of week for start time is {}.'.format(mostpop_day))
 
-    
+
 # Get most popular hour
 def popu_hour(df):
     '''Finds the most popular hour of day for start time.
@@ -133,8 +133,8 @@ def popu_hour(df):
         pop_hour_read = pop_hour - 12
     print('The most popular hour of day for start time is {}{}.'.format(pop_hour_read, am_pm))
 
-    
-# Get trip duration 
+
+# Get trip duration
 def trip_duration(df):
     '''Find the total and average trip duration in hours, minutes, and seconds.
     Args:bikeshare dataframe
@@ -174,8 +174,8 @@ def popu_trip(df):
     # The 'journey' column is created in the statistics() function.
     print('The most popular trip is {}.'.format(pop_trip))
 
-    
-    
+
+
 # Get the type and number of users
 def users(df):
     '''Finds  the counts of each user type.
@@ -186,7 +186,7 @@ def users(df):
     customer = df.query('user_type == "Customer"').user_type.count()
     print('There are {} Subscribers and {} Customers.'.format(subscriber, customer))
 
-    
+
 # Get gender distribution
 def gender(df):
     '''Finds  the counts of gender.
@@ -197,8 +197,8 @@ def gender(df):
     female_count = df.query('gender == "Male"').gender.count()
     print('There are {} male users and {} female users.'.format(male_count, female_count))
 
-    
-# Get the birth years   
+
+# Get the birth years
 def birth_years(df):
     ''' Findsthe earliest age of olderst user), and and most popular birth years.
     Args: bikeshare dataframe
@@ -210,7 +210,7 @@ def birth_years(df):
     print('The oldest bike users are born in {}.\n The youngest users are born in {}.'
           '\nThe most popular birth year is {}.'.format(earliest, latest, mode))
 
-    
+
 # Get the data lines to be displayed
 def display_data(df):
     '''This displays seven lines of data, if specified by the user.
@@ -263,17 +263,17 @@ def statistics():
     city = city_name()
     print(' Data loading....please wait...')
     df = pd.read_csv(city, parse_dates = ['Start Time', 'End Time'])
-    
+
     # Create new label.change all column names to lowercase letters and replace spaces with underscores
     new_labels = []
     for col in df.columns:
         new_labels.append(col.replace(' ', '_').lower())
     df.columns = new_labels
-    
+
     # To fully display the column. Adjust column width so that the long strings in the 'journey'
     pd.set_option('max_colwidth', 50)
-    
-    # make a new column 'journey'that concatenates 'start_station' with 'end_station' 
+
+    # make a new column 'journey'that concatenates 'start_station' with 'end_station'
     df['journey'] = df['start_station'].str.cat(df['end_station'], sep=' to ')
 
     # Now Filter by month, day, none
@@ -291,19 +291,19 @@ def statistics():
 
     if time_period == 'none':
         start_time = time.time()
-        
+
         # print the duration of the most popular month for start time
         popu_month(df_filtered)
         print("That took %s seconds." % (time.time() - start_time))
         print("\nCalculating the next statistical description...")
-    
+
     if time_period == 'none' or time_period == 'month':
         start_time = time.time()
-        
+
         # Print the most popular day of week for start time
         popu_day(df_filtered)
         print("That took %s seconds." % (time.time() - start_time))
-        print("\n Calculating the next statistical description...")    
+        print("\n Calculating the next statistical description...")
         start_time = time.time()
 
     # print the most popular hour of day for start time
@@ -311,7 +311,7 @@ def statistics():
     start_time = time.time()
     print("That took %s seconds." % (time.time() - start_time))
     print("\n Calculating the next statistical description...")
-    
+
 
     # print the total and average trip duration
     trip_duration(df_filtered)
@@ -333,11 +333,11 @@ def statistics():
     # What are the counts of each user type?
     users(df_filtered)
     print("That took %s seconds." % (time.time() - start_time))
-    
+
     if city == 'chicago.csv' or city == 'new_york_city.csv':
         print("\n Calculating the next statistical description...")
         start_time = time.time()
-        
+
         # What are the counts of gender?
         gender(df_filtered)
         print("That took %s seconds." % (time.time() - start_time))
