@@ -46,7 +46,7 @@ def get_filter_period():
 
 # Get specified month
 def get_month():
-    '''Asks the user for a month and returns the specified month.
+    '''Tell the user for a month and returns the specified month.
     Args:
         none.
     Returns:
@@ -59,7 +59,7 @@ def get_month():
         month_input = input('\nWhich month? January, February, March, April,'
                             ' May, or June?\n')
         if month_input.lower() not in months_dict.keys():
-            print('Sorry, month not in the database. Please type in a month between January and June')
+            print('Apologies, month not in the database. Please Specify a month between January and June')
     month = months_dict[month_input.lower()]
     return ('2017-{}'.format(month), '2017-{}'.format(month + 1))
 
