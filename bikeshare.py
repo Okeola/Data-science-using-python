@@ -136,7 +136,7 @@ def popu_hour(df):
 
 # Get trip duration
 def trip_duration(df):
-    '''Find the total and average trip duration in hours, minutes, and seconds.
+    '''Compute the total and average trip duration in hours, minutes, and seconds.
     Args:bikeshare dataframe
     Returns: none
     '''
@@ -155,7 +155,7 @@ def trip_duration(df):
 
  # Get most popular station
 def popu_stations(df):
-    '''Find the most popular start station and most popular end station.
+    '''Compute the most popular start station and most popular end station.
     Args: bikeshare dataframe
     Returns: none
     '''
