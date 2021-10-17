@@ -7,7 +7,7 @@ Bikeshare data created on 10/17/2021
  Bikeshare ride analysis
 
 ### Description
-This projects takes sorts and present data from three cities
+This projects takes sort and presents data from three cities. Chicago, washington and newyork city 
 
 ### Files used as inputs
 chicago
